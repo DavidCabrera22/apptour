@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AppTour - Sistema de Turismo
 
 Una aplicación completa de turismo con backend en NestJS y frontend en Next.js, que permite gestionar paquetes turísticos, reservas, pagos y carritos de compra.
@@ -611,3 +612,6 @@ docker run -p 3001:3001 --env-file .env apptour-backend
 
 ¿
 
+=======
+# apptour
+>>>>>>> 9319218f31905b751ff44d05fe58c81c78eb0fd1
