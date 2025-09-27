@@ -1,0 +1,170 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de Usuario
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      UserRole @default(CLIENT)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  bookings  Booking[]
+  reviews   Review[]
+  cartItems CartItem[]
+
+  @@map("users")
+}
+
+// Enum para roles de usuario
+enum UserRole {
+  CLIENT
+  ADMIN
+  SUPER_ADMIN
+}
+
+// Modelo de Paquete Turístico
+model TourPackage {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Decimal  @db.Decimal(10, 2)
+  duration    Int      // días
+  maxPeople   Int
+  location    String
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relaciones
+  bookings  Booking[]
+  reviews   Review[]
+  cartItems CartItem[]
+  itinerary TourItinerary[]
+
+  @@map("tour_packages")
+}
+
+// Modelo de Itinerario
+model TourItinerary {
+  id            String      @id @default(cuid())
+  day           Int
+  title         String
+  description   String
+  tourPackageId String
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+
+  @@map("tour_itineraries")
+}
+
+// Modelo de Reserva
+model Booking {
+  id            String        @id @default(cuid())
+  userId        String
+  tourPackageId String
+  startDate     DateTime
+  endDate       DateTime
+  totalPrice    Decimal       @db.Decimal(10, 2)
+  status        BookingStatus @default(PENDING)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relaciones
+  user        User        @relation(fields: [userId], references: [id])
+  tourPackage TourPackage @relation(fields: [tourPackageId], references: [id])
+  payment     Payment?
+
+  @@map("bookings")
+}
+
+// Enum para estado de reserva
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+// Modelo de Pago
+model Payment {
+  id        String        @id @default(cuid())
+  bookingId String        @unique
+  amount    Decimal       @db.Decimal(10, 2)
+  method    PaymentMethod
+  status    PaymentStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  // Relaciones
+  booking Booking @relation(fields: [bookingId], references: [id])
+
+  @@map("payments")
+}
+
+// Enums para pagos
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  PAYPAL
+  BANK_TRANSFER
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+// Modelo de Carrito
+model CartItem {
+  id            String   @id @default(cuid())
+  userId        String
+  tourPackageId String
+  quantity      Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relaciones
+  user        User        @relation(fields: [userId], references: [id])
+  tourPackage TourPackage @relation(fields: [tourPackageId], references: [id])
+
+  @@unique([userId, tourPackageId])
+  @@map("cart_items")
+}
+
+// Modelo de Reseñas
+model Review {
+  id            String      @id @default(cuid())
+  userId        String
+  tourPackageId String
+  rating        Int         @db.SmallInt
+  comment       String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relaciones
+  user        User        @relation(fields: [userId], references: [id])
+  tourPackage TourPackage @relation(fields: [tourPackageId], references: [id])
+
+  @@unique([userId, tourPackageId])
+  @@map("reviews")
+}
