@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { useCart } from '@/providers/CartProvider'; // Cambiado de '@/hooks/useCart'
 import Cart from '@/components/Cart';
