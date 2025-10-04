@@ -208,7 +208,8 @@ const allPackages: TourPackage[] = [
 
 export default function PackagesSection() {
   const packages = allPackages;
-  const [, setOpenId] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const openPackage = packages.find((p) => p.id === openId) || null;
 
   return (
     <section
@@ -419,6 +420,148 @@ export default function PackagesSection() {
           </div>
         </div>
       </div>
+
+      {/* Modal de Itinerario */}
+      {openPackage && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            {/* Header del Modal */}
+            <div className="relative h-48 bg-gray-900">
+              <Image
+                src={openPackage.imageUrl}
+                alt={openPackage.title}
+                fill
+                className="object-cover opacity-70"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "/images/placeholder-tour.jpg";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <h3 className="text-2xl font-bold mb-1">{openPackage.title}</h3>
+                <p className="text-sm opacity-90">
+                  {openPackage.days} días, {openPackage.nights} noches
+                </p>
+              </div>
+              <button
+                onClick={() => setOpenId(null)}
+                className="absolute top-4 right-4 w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Contenido del Modal */}
+            <div className="p-6 max-h-[60vh] overflow-y-auto">
+              <div className="mb-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-2">
+                    <ClockIcon className="w-5 h-5 text-gray-500" />
+                    <span className="text-gray-700">
+                      {openPackage.days} días, {openPackage.nights} noches
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPinIcon className="w-5 h-5 text-gray-500" />
+                    <span className="text-gray-700">
+                      {openPackage.location}
+                    </span>
+                  </div>
+                </div>
+
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Itinerario Detallado
+                </h4>
+                <div className="space-y-4">
+                  {openPackage.itinerary.map((day, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg"
+                    >
+                      <div className="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        {day.day}
+                      </div>
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-1">
+                          {day.title}
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          {day.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Incluye */}
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Incluye
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {openPackage.inclusions.transport && (
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 text-sm">Transporte</span>
+                    </div>
+                  )}
+                  {openPackage.inclusions.lodging && (
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 text-sm">Alojamiento</span>
+                    </div>
+                  )}
+                  {openPackage.inclusions.meals.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 text-sm">
+                        Alimentación: {openPackage.inclusions.meals.join(", ")}
+                      </span>
+                    </div>
+                  )}
+                  {openPackage.inclusions.tours.map((tour, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 text-sm">{tour}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer del Modal */}
+            <div className="border-t border-gray-200 p-6 bg-gray-50">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-2xl font-bold text-rose-600">
+                    ${openPackage.price}
+                  </span>
+                  <span className="text-sm text-gray-600 ml-1">
+                    {openPackage.priceType}
+                  </span>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setOpenId(null)}
+                    className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Cerrar
+                  </button>
+                  <Link
+                    href={`/paquete/${openPackage.id}`}
+                    className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                    onClick={() => setOpenId(null)}
+                  >
+                    Reservar Ahora
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
