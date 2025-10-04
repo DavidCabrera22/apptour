@@ -1,8 +1,8 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import { StarIcon } from '@heroicons/react/24/solid';
-import { ClockIcon, UsersIcon, MapPinIcon } from '@heroicons/react/24/outline';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { StarIcon } from "@heroicons/react/24/solid";
+import { ClockIcon, UsersIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 interface TourPackage {
   id: string;
@@ -21,159 +21,172 @@ interface TourPackage {
 
 const allPackages: TourPackage[] = [
   {
-    id: '1',
-    title: 'FULL ADMISSION',
-    description: 'Acceso completo a todas las atracciones del parque acuático. Disfruta de cenotes cristalinos, tirolesas y aventuras extremas.',
+    id: "1",
+    title: "FULL ADMISSION",
+    description:
+      "Acceso completo a todas las atracciones del parque acuático. Disfruta de cenotes cristalinos, tirolesas y aventuras extremas.",
     price: 89,
-    duration: 'Todo el día',
+    duration: "Todo el día",
     maxParticipants: 50,
-    location: 'Riviera Maya',
+    location: "Riviera Maya",
     rating: 4.8,
     reviewCount: 1250,
-    imageUrl: '/images/cenote-experience.jpg',
-    highlights: ['Cenotes', 'Tirolesas', 'Snorkel'],
-    category: 'Acuático'
+    imageUrl: "/images/cenote-experience.jpg",
+    highlights: ["Cenotes", "Tirolesas", "Snorkel"],
+    category: "Acuático",
   },
   {
-    id: '2',
-    title: 'FULL ADMISSION + BUGGY',
-    description: 'La aventura completa más emocionante experiencia en buggy por la selva maya. Adrenalina pura en la naturaleza.',
+    id: "2",
+    title: "FULL ADMISSION + BUGGY",
+    description:
+      "La aventura completa más emocionante experiencia en buggy por la selva maya. Adrenalina pura en la naturaleza.",
     price: 129,
-    duration: 'Todo el día',
+    duration: "Todo el día",
     maxParticipants: 30,
-    location: 'Selva Maya',
+    location: "Selva Maya",
     rating: 4.9,
     reviewCount: 890,
-    imageUrl: '/images/jungle-adventure.jpg',
-    highlights: ['Buggy', 'Selva', 'Aventura'],
-    category: 'Extremo'
+    imageUrl: "/images/jungle-adventure.jpg",
+    highlights: ["Buggy", "Selva", "Aventura"],
+    category: "Extremo",
   },
   {
-    id: '3',
-    title: 'CENOTE EXPERIENCE',
-    description: 'Sumérgete en las aguas cristalinas de los cenotes sagrados mayas. Una experiencia mística y refrescante.',
+    id: "3",
+    title: "CENOTE EXPERIENCE",
+    description:
+      "Sumérgete en las aguas cristalinas de los cenotes sagrados mayas. Una experiencia mística y refrescante.",
     price: 65,
-    duration: '6 horas',
+    duration: "6 horas",
     maxParticipants: 25,
-    location: 'Cenotes Sagrados',
+    location: "Cenotes Sagrados",
     rating: 4.7,
     reviewCount: 650,
-    imageUrl: '/images/cenote-experience.jpg',
-    highlights: ['Cenotes', 'Snorkel', 'Historia Maya'],
-    category: 'Cultural'
+    imageUrl: "/images/cenote-experience.jpg",
+    highlights: ["Cenotes", "Snorkel", "Historia Maya"],
+    category: "Cultural",
   },
   {
-    id: '4',
-    title: 'JUNGLE ADVENTURE',
-    description: 'Explora la selva tropical en una aventura épica. Tirolesas, rappel y encuentros con la vida silvestre.',
+    id: "4",
+    title: "JUNGLE ADVENTURE",
+    description:
+      "Explora la selva tropical en una aventura épica. Tirolesas, rappel y encuentros con la vida silvestre.",
     price: 95,
-    duration: '8 horas',
+    duration: "8 horas",
     maxParticipants: 20,
-    location: 'Selva Tropical',
+    location: "Selva Tropical",
     rating: 4.8,
     reviewCount: 420,
-    imageUrl: '/images/jungle-adventure.jpg',
-    highlights: ['Tirolesas', 'Rappel', 'Vida Silvestre'],
-    category: 'Aventura'
+    imageUrl: "/images/jungle-adventure.jpg",
+    highlights: ["Tirolesas", "Rappel", "Vida Silvestre"],
+    category: "Aventura",
   },
   {
-    id: '5',
-    title: 'BEACH & REEF',
-    description: 'Combina playa paradisíaca con snorkel en arrecifes de coral. La perfecta mezcla de relajación y aventura.',
+    id: "5",
+    title: "BEACH & REEF",
+    description:
+      "Combina playa paradisíaca con snorkel en arrecifes de coral. La perfecta mezcla de relajación y aventura.",
     price: 75,
-    duration: '7 horas',
+    duration: "7 horas",
     maxParticipants: 40,
-    location: 'Arrecife Mesoamericano',
+    location: "Arrecife Mesoamericano",
     rating: 4.6,
     reviewCount: 780,
-    imageUrl: '/images/hero-beach.jpg',
-    highlights: ['Playa', 'Snorkel', 'Arrecife'],
-    category: 'Marino'
+    imageUrl: "/images/hero-beach.jpg",
+    highlights: ["Playa", "Snorkel", "Arrecife"],
+    category: "Marino",
   },
   {
-    id: '6',
-    title: 'EXTREME ZIPLINE',
-    description: 'Vuela sobre la selva en las tirolesas más largas del Caribe. Una experiencia de adrenalina pura a 50 metros de altura.',
+    id: "6",
+    title: "EXTREME ZIPLINE",
+    description:
+      "Vuela sobre la selva en las tirolesas más largas del Caribe. Una experiencia de adrenalina pura a 50 metros de altura.",
     price: 110,
-    duration: '5 horas',
+    duration: "5 horas",
     maxParticipants: 15,
-    location: 'Canopy Selvático',
+    location: "Canopy Selvático",
     rating: 4.9,
     reviewCount: 320,
-    imageUrl: '/images/jungle-adventure.jpg',
-    highlights: ['Tirolesas', 'Altura', 'Adrenalina'],
-    category: 'Extremo'
+    imageUrl: "/images/jungle-adventure.jpg",
+    highlights: ["Tirolesas", "Altura", "Adrenalina"],
+    category: "Extremo",
   },
   {
-    id: '7',
-    title: 'MAYA CULTURAL TOUR',
-    description: 'Descubre los secretos de la civilización maya visitando ruinas ancestrales y participando en ceremonias tradicionales.',
+    id: "7",
+    title: "MAYA CULTURAL TOUR",
+    description:
+      "Descubre los secretos de la civilización maya visitando ruinas ancestrales y participando en ceremonias tradicionales.",
     price: 85,
-    duration: '9 horas',
+    duration: "9 horas",
     maxParticipants: 35,
-    location: 'Zona Arqueológica',
+    location: "Zona Arqueológica",
     rating: 4.5,
     reviewCount: 540,
-    imageUrl: '/images/cenote-experience.jpg',
-    highlights: ['Historia', 'Cultura', 'Arqueología'],
-    category: 'Cultural'
+    imageUrl: "/images/cenote-experience.jpg",
+    highlights: ["Historia", "Cultura", "Arqueología"],
+    category: "Cultural",
   },
   {
-    id: '8',
-    title: 'DEEP SEA DIVING',
-    description: 'Sumérgete en las profundidades del mar Caribe y explora arrecifes de coral únicos con vida marina espectacular.',
+    id: "8",
+    title: "DEEP SEA DIVING",
+    description:
+      "Sumérgete en las profundidades del mar Caribe y explora arrecifes de coral únicos con vida marina espectacular.",
     price: 150,
-    duration: '6 horas',
+    duration: "6 horas",
     maxParticipants: 12,
-    location: 'Arrecife de Coral',
+    location: "Arrecife de Coral",
     rating: 4.8,
     reviewCount: 280,
-    imageUrl: '/images/hero-beach.jpg',
-    highlights: ['Buceo', 'Arrecifes', 'Vida Marina'],
-    category: 'Marino'
+    imageUrl: "/images/hero-beach.jpg",
+    highlights: ["Buceo", "Arrecifes", "Vida Marina"],
+    category: "Marino",
   },
   {
-    id: '9',
-    title: 'NIGHT JUNGLE SAFARI',
-    description: 'Aventura nocturna por la selva tropical. Observa la vida silvestre en su hábitat natural bajo la luz de la luna.',
+    id: "9",
+    title: "NIGHT JUNGLE SAFARI",
+    description:
+      "Aventura nocturna por la selva tropical. Observa la vida silvestre en su hábitat natural bajo la luz de la luna.",
     price: 95,
-    duration: '4 horas',
+    duration: "4 horas",
     maxParticipants: 18,
-    location: 'Reserva Natural',
+    location: "Reserva Natural",
     rating: 4.7,
     reviewCount: 190,
-    imageUrl: '/images/jungle-adventure.jpg',
-    highlights: ['Nocturno', 'Safari', 'Vida Silvestre'],
-    category: 'Aventura'
+    imageUrl: "/images/jungle-adventure.jpg",
+    highlights: ["Nocturno", "Safari", "Vida Silvestre"],
+    category: "Aventura",
   },
   {
-    id: '10',
-    title: 'CENOTE CAVE DIVING',
-    description: 'Explora las cuevas subacuáticas más impresionantes del mundo. Una experiencia única para buzos certificados.',
+    id: "10",
+    title: "CENOTE CAVE DIVING",
+    description:
+      "Explora las cuevas subacuáticas más impresionantes del mundo. Una experiencia única para buzos certificados.",
     price: 180,
-    duration: '8 horas',
+    duration: "8 horas",
     maxParticipants: 8,
-    location: 'Sistema de Cuevas',
+    location: "Sistema de Cuevas",
     rating: 4.9,
     reviewCount: 150,
-    imageUrl: '/images/cenote-experience.jpg',
-    highlights: ['Cuevas', 'Buceo Técnico', 'Exclusivo'],
-    category: 'Extremo'
-  }
+    imageUrl: "/images/cenote-experience.jpg",
+    highlights: ["Cuevas", "Buceo Técnico", "Exclusivo"],
+    category: "Extremo",
+  },
 ];
 
 export default function AdventuresSection() {
   // Removemos el estado de categoría seleccionada ya que no habrá filtros
   // const [selectedCategory, setSelectedCategory] = useState('Todos');
-  
+
   // Removemos el array de categorías
   // const categories = ['Todos', 'Acuático', 'Aventura', 'Extremo', 'Cultural', 'Marino'];
-  
+
   // Simplificamos para mostrar todos los paquetes sin filtrado
   const packages = allPackages.slice(0, 8);
 
   return (
-    <section id="aventuras" className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-green-50 relative overflow-hidden">
+    <section
+      id="aventuras"
+      className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-green-50 relative overflow-hidden"
+    >
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
@@ -194,8 +207,8 @@ export default function AdventuresSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Descubre experiencias únicas en la Riviera Maya. Desde aventuras extremas hasta 
-            relajantes encuentros con la naturaleza.
+            Descubre experiencias únicas en la Riviera Maya. Desde aventuras
+            extremas hasta relajantes encuentros con la naturaleza.
           </p>
         </div>
 
@@ -205,47 +218,77 @@ export default function AdventuresSection() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-blue-100">
-            <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">10+</div>
-            <div className="text-sm md:text-base text-gray-600">Aventuras Únicas</div>
+            <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">
+              10+
+            </div>
+            <div className="text-sm md:text-base text-gray-600">
+              Aventuras Únicas
+            </div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-green-100">
-            <div className="text-2xl md:text-3xl font-bold text-green-600 mb-1">50K+</div>
-            <div className="text-sm md:text-base text-gray-600">Aventureros Felices</div>
+            <div className="text-2xl md:text-3xl font-bold text-green-600 mb-1">
+              50K+
+            </div>
+            <div className="text-sm md:text-base text-gray-600">
+              Aventureros Felices
+            </div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-orange-100">
-            <div className="text-2xl md:text-3xl font-bold text-orange-500 mb-1">4.8★</div>
-            <div className="text-sm md:text-base text-gray-600">Calificación Promedio</div>
+            <div className="text-2xl md:text-3xl font-bold text-orange-500 mb-1">
+              4.8★
+            </div>
+            <div className="text-sm md:text-base text-gray-600">
+              Calificación Promedio
+            </div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-teal-100">
-            <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-1">100%</div>
-            <div className="text-sm md:text-base text-gray-600">Diversión Garantizada</div>
+            <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-1">
+              100%
+            </div>
+            <div className="text-sm md:text-base text-gray-600">
+              Diversión Garantizada
+            </div>
           </div>
         </div>
-        
+
         {/* Grid de paquetes */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {packages.map((pkg, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col">
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
+            >
               {/* Category Badge */}
               <div className="relative">
                 <div className="absolute top-4 left-4 z-10">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium text-white ${
-                    pkg.category === 'Aventura' ? 'bg-green-500' :
-                    pkg.category === 'Marino' ? 'bg-blue-500' :
-                    pkg.category === 'Acuático' ? 'bg-cyan-500' :
-                    pkg.category === 'Cultural' ? 'bg-purple-500' :
-                    pkg.category === 'Extremo' ? 'bg-red-500' :
-                    'bg-orange-500'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-sm font-medium text-white ${
+                      pkg.category === "Aventura"
+                        ? "bg-green-500"
+                        : pkg.category === "Marino"
+                        ? "bg-blue-500"
+                        : pkg.category === "Acuático"
+                        ? "bg-cyan-500"
+                        : pkg.category === "Cultural"
+                        ? "bg-purple-500"
+                        : pkg.category === "Extremo"
+                        ? "bg-red-500"
+                        : "bg-orange-500"
+                    }`}
+                  >
                     {pkg.category}
                   </span>
                 </div>
-                
+
                 {/* Rating Badge */}
                 <div className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
                   <StarIcon className="w-4 h-4 text-yellow-400" />
-                  <span className="text-sm font-medium text-gray-900">{pkg.rating}</span>
-                  <span className="text-xs text-gray-600">({pkg.reviewCount})</span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {pkg.rating}
+                  </span>
+                  <span className="text-xs text-gray-600">
+                    ({pkg.reviewCount})
+                  </span>
                 </div>
 
                 {/* Package Image */}
@@ -257,7 +300,7 @@ export default function AdventuresSection() {
                     className="object-cover transition-transform duration-300 hover:scale-105"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder-tour.jpg';
+                      target.src = "/images/placeholder-tour.jpg";
                     }}
                   />
                 </div>
@@ -281,7 +324,7 @@ export default function AdventuresSection() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                   {pkg.title}
                 </h3>
-                
+
                 <div className="flex items-center gap-1 text-gray-600 mb-3">
                   <MapPinIcon className="w-4 h-4" />
                   <span className="text-sm">{pkg.location}</span>
@@ -295,7 +338,7 @@ export default function AdventuresSection() {
                 {/* Highlights */}
                 <div className="flex flex-wrap gap-2 mb-6 mt-2">
                   {pkg.highlights.slice(0, 3).map((highlight, idx) => (
-                    <span 
+                    <span
                       key={idx}
                       className="px-3 py-2 bg-green-100 text-green-700 text-xs rounded-full"
                     >
@@ -310,9 +353,11 @@ export default function AdventuresSection() {
                     <span className="text-2xl font-bold text-green-600">
                       ${pkg.price}
                     </span>
-                    <span className="text-sm text-gray-600 ml-1">por persona</span>
+                    <span className="text-sm text-gray-600 ml-1">
+                      por persona
+                    </span>
                   </div>
-                  <Link 
+                  <Link
                     href={`/paquete/${pkg.id}`}
                     className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm lg:text-base lg:px-6 lg:py-3"
                   >
@@ -331,9 +376,10 @@ export default function AdventuresSection() {
               ¿No encuentras lo que buscas?
             </h3>
             <p className="text-lg mb-6 opacity-90">
-              Creamos experiencias personalizadas según tus preferencias y necesidades
+              Creamos experiencias personalizadas según tus preferencias y
+              necesidades
             </p>
-            <Link 
+            <Link
               href="/contacto"
               className="inline-flex items-center justify-center px-8 py-3 bg-white text-green-600 font-medium rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
