@@ -220,7 +220,7 @@ export default function PackageDetailPage() {
   const params = useParams();
   const router = useRouter();
   const packageId = params.id as string;
-
+  
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
@@ -273,9 +273,9 @@ export default function PackageDetailPage() {
       alert("Por favor selecciona una fecha para tu reserva");
       return;
     }
-
+  
     setIsLoading(true);
-
+    
     try {
       await addToCart({
         packageId: packageData.id,
@@ -285,13 +285,13 @@ export default function PackageDetailPage() {
         selectedDate,
         pickupLocation: pickupOption === "yes" ? "Hotel pickup" : "No pickup",
       });
-
+  
       setShowSuccessMessage(true);
-
+      
       if (successTimeoutRef.current) {
         clearTimeout(successTimeoutRef.current);
       }
-
+      
       successTimeoutRef.current = setTimeout(() => {
         setShowSuccessMessage(false);
       }, 8000);
@@ -367,7 +367,7 @@ export default function PackageDetailPage() {
                   <span className="text-gray-700">{packageData.location}</span>
                 </div>
               </div>
-
+              
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Descripción del Paquete
               </h2>
@@ -378,10 +378,10 @@ export default function PackageDetailPage() {
 
             {/* Incluye */}
             <div className="bg-white/90 backdrop-blur rounded-2xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-green-600 mb-4 flex items-center gap-2">
-                <CheckIcon className="w-5 h-5" />
-                Incluye
-              </h3>
+                <h3 className="text-lg font-semibold text-green-600 mb-4 flex items-center gap-2">
+                  <CheckIcon className="w-5 h-5" />
+                  Incluye
+                </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {packageData.inclusions.transport && (
                   <div className="flex items-center gap-2">
@@ -407,7 +407,7 @@ export default function PackageDetailPage() {
                   <div key={idx} className="flex items-center gap-2">
                     <CheckIcon className="w-4 h-4 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700">{tour}</span>
-                  </div>
+              </div>
                 ))}
               </div>
             </div>
