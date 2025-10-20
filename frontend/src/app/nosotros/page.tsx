@@ -480,7 +480,6 @@ export default function NosotrosPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-rose-500 via-pink-600 to-orange-500 rounded-3xl p-12 text-white text-center relative overflow-hidden">
-            {/* Decorative elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
