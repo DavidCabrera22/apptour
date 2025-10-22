@@ -206,7 +206,7 @@ export default function ContactoPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="h-fit bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-rose-100 max-w-3xl w-full mx-auto">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-rose-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Envíanos un Mensaje
               </h2>
@@ -238,7 +238,7 @@ export default function ContactoPage() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full max-w-2xl pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-500"
                           placeholder="Tu nombre completo"
                         />
                       </div>
@@ -256,7 +256,7 @@ export default function ContactoPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full max-w-2xl pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-500"
                           placeholder="tu@email.com"
                         />
                       </div>
@@ -275,7 +275,7 @@ export default function ContactoPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full max-w-2xl pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-500"
                           placeholder="+1 (555) 123-4567"
                         />
                       </div>
@@ -304,9 +304,7 @@ export default function ContactoPage() {
                         <option value="pareja-3d2n">
                           Escapada Romántica 3 días / 2 noches
                         </option>
-                        <option value="personalizado">
-                          Paquete Personalizado
-                        </option>
+                        <option value="personalizado">Paquete Personalizado</option>
                       </select>
                     </div>
                   </div>
@@ -321,7 +319,7 @@ export default function ContactoPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full max-w-3xl px-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors text-gray-800 placeholder-gray-500"
                       placeholder="¿En qué podemos ayudarte?"
                     />
                   </div>
@@ -336,7 +334,7 @@ export default function ContactoPage() {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full max-w-3xl px-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors resize-none text-gray-800 placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-rose-500 focus:outline-none transition-colors resize-none text-gray-800 placeholder-gray-500"
                       placeholder="Cuéntanos más detalles sobre tu consulta..."
                     />
                   </div>
