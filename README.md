@@ -5,6 +5,55 @@ Una aplicación completa de turismo con backend en NestJS y frontend en Next.js,
 
 ## 🏗️ Arquitectura del Proyecto
 
+### Agente Virtual (Chatbot)
+- Módulo NestJS (`ChatbotModule`) con webhook para Meta: `GET/POST /webhooks/meta`.
+- Soporta recepción de mensajes de WhatsApp Cloud API y responde automáticamente.
+- Usa un servicio de IA (OpenAI) opcional para respuestas más inteligentes.
+- Base de conocimiento local en `backend/src/chatbot/knowledge-base.md`.
+
+#### Variables de Entorno (Chatbot)
+Agrega al archivo `.env` del backend:
+
+```
+# Meta (WhatsApp Cloud API)
+META_VERIFY_TOKEN="token-de-verificacion-webhook"
+META_ACCESS_TOKEN="EAAG...token-de-acceso"
+WHATSAPP_PHONE_ID="123456789012345"
+
+# Asistente IA
+OPENAI_API_KEY="sk-..."
+OPENAI_MODEL="gpt-4o-mini"
+
+# API base (si el chatbot necesita consultar endpoints)
+API_BASE_URL="http://localhost:3001"
+```
+
+#### Pasos para conectar a redes sociales (WhatsApp)
+- Opción A (oficial, Meta Cloud API):
+  - Crea una app en Meta for Developers y añade WhatsApp.
+  - Obtén `META_ACCESS_TOKEN` y `WHATSAPP_PHONE_ID` desde el panel.
+  - Configura el webhook en `https://TU_DOMINIO/webhooks/meta` con `META_VERIFY_TOKEN`.
+  - Suscríbete a los eventos de mensajes.
+
+- Opción B (sin usar panel de Meta directamente, vía Twilio):
+  - Crea una cuenta en Twilio y habilita el Sandbox de WhatsApp.
+  - Desde el Sandbox, sigue las instrucciones para “join” y obtener el número `whatsapp:+14155238886`.
+  - Configura el webhook “WHEN A MESSAGE COMES IN” a `https://TU_DOMINIO/webhooks/twilio-whatsapp`.
+  - Variables requeridas:
+    - `TWILIO_ACCOUNT_SID`
+    - `TWILIO_AUTH_TOKEN`
+    - `TWILIO_WHATSAPP_FROM` (opcional; por defecto sandbox)
+
+#### Flujo de mensajes
+1. Usuario escribe por WhatsApp.
+2. El proveedor (Meta o Twilio) envía el evento al webhook (`POST /webhooks/meta` o `POST /webhooks/twilio-whatsapp`).
+3. El backend genera respuesta con `ChatbotService` (OpenAI si está configurado).
+4. El backend responde al usuario vía Graph API (Meta) o API de Twilio.
+
+#### Extender a Instagram/Messenger
+- El mismo webhook se puede ampliar para procesar DMs de Instagram y Messenger.
+- Requiere suscribirse a los campos correspondientes y usar el endpoint de envío de mensajes específico.
+
 
 ## 🚀 Configuración y Ejecución
 

@@ -7,6 +7,8 @@ import { TourPackagesModule } from './tour-packages/tour-packages.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { PaymentsModule } from './payments/payments.module';
 import { CartModule } from './cart/cart.module';
+import { ChatbotModule } from './chatbot/chatbot.module';
+import { TwilioModule } from './twilio/twilio.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { CartModule } from './cart/cart.module';
     BookingsModule,
     PaymentsModule,
     CartModule,
+    ChatbotModule,
+    TwilioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
