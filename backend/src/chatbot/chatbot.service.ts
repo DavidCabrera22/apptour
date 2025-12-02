@@ -1,6 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
+export interface GenerateReplyOptions {
+  userId?: string;
+  source?: 'whatsapp' | 'instagram' | 'messenger' | 'web';
+}
 
 @Injectable()
 export class ChatbotService {
@@ -24,7 +28,13 @@ INSTRUCCIONES:
 - Si pregunta por itinerario o actividades, muestra los detalles día por día
 - Ofrece alternativas útiles cuando no hay coincidencias exactas`;
 
-  async generateReply(question: string): Promise<string> {
+  async generateReply(
+    question: string,
+    options: GenerateReplyOptions = {},
+  ): Promise<string> {
+    this.logger.log(
+      `Generating reply for ${options.source || 'unknown'} user ${options.userId || 'unknown'}`,
+    );
     const kb = await this.loadKnowledgeBase();
     const dbContext = await this.getSmartDatabaseContext(question);
     const openaiKey = process.env.OPENAI_API_KEY;
